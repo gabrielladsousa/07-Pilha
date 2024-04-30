@@ -73,7 +73,6 @@ void inicializar()
 
 }
 
-
 void push()
 {
 	// aloca memoria dinamicamente para o novo elemento
@@ -87,13 +86,26 @@ void push()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-
+	if (topo == NULL) {
+		topo = novo;
+	}
+	else {
+		novo->prox = topo;
+		topo = novo;
+	}
 }
 
 void pop()
 {
+	if (topo == NULL) {
+		cout << "Lista vazia\n";
+		return;
+	}
 
-	
-
+	NO* excluir = topo;
+	cout << "Elemento excluido: " << topo->valor << endl;
+	topo = topo->prox;
+	free(excluir);
 }
+
 
